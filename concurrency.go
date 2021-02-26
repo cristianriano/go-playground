@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func concurrency() {
 	// Wait Group
 	var wg sync.WaitGroup
 	wg.Add(1)
@@ -21,7 +21,7 @@ func main() {
 
 	// Channel
 	c := make(chan string)
-	go count_with_channel("fish", c)
+	go countWithChannel("fish", c)
 
 	for msg := range c {
 		// Manually check if the channel is close
@@ -86,7 +86,7 @@ func count(thing string) {
 	}
 }
 
-func count_with_channel(thing string, c chan string) {
+func countWithChannel(thing string, c chan string) {
 	for i:= 0; i < 2; i++ {
 		c <- thing
 		time.Sleep(time.Millisecond * 500)

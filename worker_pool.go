@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func workerPool() {
 	jobs := make(chan int, 100)
 	results := make(chan string, 100)
 

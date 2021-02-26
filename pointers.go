@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func pointers() {
 	x := 5
 	incr(&x)
 	fmt.Println(x)

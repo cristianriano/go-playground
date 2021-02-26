@@ -6,7 +6,7 @@ import (
 	"math"
 )
 
-func main() {
+func hello() {
 	// Variable declaration
 	var x int
 	x = 5
