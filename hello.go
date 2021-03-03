@@ -26,8 +26,12 @@ func hello() {
 	a := []int{0,1,2,3,4}
 	a[2] = 1
 	a = append(a, 10)
+	// Slice with 0 length and 5 capacity
+	// b := make([]int, 0, 5)
 
-	fmt.Println(a)
+	// By default takes all the array so [1:] skips the first elem
+	fmt.Println(a[:])
+	fmt.Println("Array", a, "Capacity", cap(a), "Lenght", len(a))
 
 	// Map
 	vertices := make(map[string]int)
@@ -35,8 +39,10 @@ func hello() {
 	vertices["triangle"] = 3
 	vertices["square"] = 4
 	delete(vertices, "triangle")
+	elem, ok := vertices["pentagon"]
 
 	fmt.Println(vertices)
+	fmt.Println("Has element?", elem, "=", ok)
 
 	// Type conversion
 	number := 5
