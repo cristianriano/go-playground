@@ -38,6 +38,12 @@ func hello() {
 
 	fmt.Println(vertices)
 
+	// Type conversion
+	number := 5
+	var text string
+	text = string(number)
+	fmt.Printf("Now as text %s", text)
+
 	// Iterators
 	for i := 0; i < 5; i++ {
 		fmt.Println(i)

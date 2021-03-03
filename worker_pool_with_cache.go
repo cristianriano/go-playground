@@ -11,10 +11,10 @@ func workerPoolWithCache() {
 	cache := map[int]int{0: 1, 1: 1}
 	mutex := sync.RWMutex{}
 
-	go worker(jobs, results, cache, &mutex)
-	go worker(jobs, results, cache, &mutex)
-	go worker(jobs, results, cache, &mutex)
-	go worker(jobs, results, cache, &mutex)
+	go workerWithCache(jobs, results, cache, &mutex)
+	go workerWithCache(jobs, results, cache, &mutex)
+	go workerWithCache(jobs, results, cache, &mutex)
+	go workerWithCache(jobs, results, cache, &mutex)
 
 	for i:= 0; i < 10000; i++ {
 		jobs <- i
@@ -26,9 +26,9 @@ func workerPoolWithCache() {
 	}
 }
 
-func worker(jobs <-chan int, results chan<- string, cache map[int]int, mutex *sync.RWMutex) {
+func workerWithCache(jobs <-chan int, results chan<- string, cache map[int]int, mutex *sync.RWMutex) {
 	for n := range jobs {
-		res := fib(n, cache, mutex)
+		res := fibWithCache(n, cache, mutex)
 
 		mutex.Lock()
 		cache[n] = res
@@ -38,7 +38,7 @@ func worker(jobs <-chan int, results chan<- string, cache map[int]int, mutex *sy
 	}
 }
 
-func fib(n int, cache map[int]int, mutex *sync.RWMutex) int {
+func fibWithCache(n int, cache map[int]int, mutex *sync.RWMutex) int {
 	mutex.RLock()
 	val := cache[n]
 	mutex.RUnlock()
@@ -48,5 +48,5 @@ func fib(n int, cache map[int]int, mutex *sync.RWMutex) int {
 	}
 
 
-	return fib(n - 1, cache, mutex) + fib(n - 2, cache, mutex)
+	return fibWithCache(n - 1, cache, mutex) + fibWithCache(n - 2, cache, mutex)
 }

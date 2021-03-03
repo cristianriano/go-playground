@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+	"runtime"
+)
+
 func main() {
-	workerPoolWithCache()
+	fmt.Print(runtime.GOOS)
+	// workerPoolWithCache()
 }
