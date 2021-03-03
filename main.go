@@ -6,6 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Print(runtime.GOOS)
+	fmt.Println("Running on: ", runtime.GOOS)
+	fmt.Println(Count("My example"))
 	// workerPoolWithCache()
 }
