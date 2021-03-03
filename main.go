@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/cristianriano/go-playground/words"
+	"github.com/cristianriano/go-playground/tour"
 )
 
 func main() {
 	fmt.Println("Running on: ", runtime.GOOS)
-	fmt.Println(words.Count("My example"))
+	fmt.Println(tour.WordCount("My example"))
 	// workerPoolWithCache()
 }
