@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"runtime"
+
+	"github.com/cristianriano/go-playground/tour"
 )
 
 func main() {
@@ -14,5 +16,5 @@ func main() {
 	// 	fmt.Println(f())
 	// }
 	// workerPoolWithCache()
-	concurrency()
+	tour.RunWebCrawler()
 }

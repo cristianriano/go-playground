@@ -11,9 +11,17 @@ type Fetcher interface {
 	Fetch(url string) (body string, urls []string, err error)
 }
 
+type safeMap struct {
+	cache map[string]bool
+	mu sync.RWMutex
+}
+
 // Crawl uses fetcher to recursively crawl pages starting with url, to a maximum of depth.
-func Crawl(url string, depth int, fetcher Fetcher) {
-	defer wg.Done()
+func Crawl(url string, depth int, fetcher Fetcher, sm *safeMap) {
+	defer func() {
+		wg.Done()
+		sm.add(url)
+	}()
 
 	if depth <= 0 {
 		return
@@ -26,8 +34,11 @@ func Crawl(url string, depth int, fetcher Fetcher) {
 
 	fmt.Printf("found: %s %q\n", url, body)
 	for _, u := range urls {
+		if sm.alreadyVisited(u) {
+			continue
+		}
 		wg.Add(1)
-		go Crawl(u, depth-1, fetcher)
+		go Crawl(u, depth-1, fetcher, sm)
 	}
 
 	return
@@ -35,10 +46,25 @@ func Crawl(url string, depth int, fetcher Fetcher) {
 
 var wg sync.WaitGroup
 
-func main() {
+//
+func RunWebCrawler() {
 	wg.Add(1)
-	Crawl("https://golang.org/", 4, fetcher)
+	sm := safeMap{cache: make(map[string]bool)}
+	Crawl("https://golang.org/", 4, fetcher, &sm)
 	wg.Wait()
+}
+
+func (sm *safeMap) alreadyVisited(url string) bool {
+	sm.mu.RLock()
+	defer sm.mu.RUnlock()
+
+	return sm.cache[url]
+}
+
+func (sm *safeMap) add(url string) {
+	sm.mu.Lock()
+	sm.cache[url] = true
+	sm.mu.Unlock()
 }
 
 // fakeFetcher is Fetcher that returns canned results.
