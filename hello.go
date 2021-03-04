@@ -47,7 +47,7 @@ func hello() {
 	// Type conversion
 	number := 5
 	var text string
-	text = string(number)
+	text = fmt.Sprint(number)
 	fmt.Printf("Now as text %s", text)
 
 	// Iterators
