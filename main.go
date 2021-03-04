@@ -14,5 +14,5 @@ func main() {
 	// 	fmt.Println(f())
 	// }
 	// workerPoolWithCache()
-	typeSwitchExample()
+	concurrency()
 }

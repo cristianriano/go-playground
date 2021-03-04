@@ -74,6 +74,9 @@ func concurrency() {
 			fmt.Println(m1)
 		case m2 := <- c2:
 			fmt.Println(m2)
+		default:
+			fmt.Println("...")
+			time.Sleep(time.Millisecond * 250)
 		}
 		i++
 	}
