@@ -1,11 +1,12 @@
-package main
+package basic
 
 import (
 	"fmt"
 	"sync"
 )
 
-func workerPoolWithCache() {
+// WorkerPoolWithCache example using a cache and mutex for Fib calculation
+func WorkerPoolWithCache() {
 	jobs := make(chan int, 10000)
 	results := make(chan string, 10000)
 	cache := map[int]int{0: 1, 1: 1}

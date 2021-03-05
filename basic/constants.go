@@ -1,4 +1,4 @@
-package main
+package basic
 
 const pi = 3.14
 

@@ -1,4 +1,4 @@
-package main
+package basic
 
 import "fmt"
 
@@ -29,8 +29,8 @@ func interfaceExample() {
 	p.introduce()
 }
 
-// Use empty interface to hande any kind of value like Println
-func emptyInterfaceExample() {
+// EmptyInterfaceExample use empty interface to hande any kind of value like Println
+func EmptyInterfaceExample() {
 	var i interface{}
 	describe(i)
 
@@ -41,7 +41,8 @@ func emptyInterfaceExample() {
 	describe(i)
 }
 
-func typeAssertionExample() {
+// TypeAssertionExample attempts to cast
+func TypeAssertionExample() {
 	var i interface{} = "hello"
 
 	s := i.(string)
@@ -57,7 +58,8 @@ func typeAssertionExample() {
 	// fmt.Println(f)
 }
 
-func typeSwitchExample() {
+// TypeSwitchExample using variable type on a switch
+func TypeSwitchExample() {
 	do(21)
 	do("Hi")
 	do(false)

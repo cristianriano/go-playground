@@ -1,4 +1,4 @@
-package main
+package basic
 
 import (
 	"errors"
@@ -6,7 +6,24 @@ import (
 	"math"
 )
 
-func hello() {
+// Basic Go Types
+// bool
+// string
+// int  int8  int16  int32  int64
+// uint uint8 uint16 uint32 uint64 uintptr
+// byte // alias for uint8
+// rune // alias for int32
+//      // represents a Unicode code point
+// float32 float64
+// complex64 complex128
+
+// zero values
+// 0 for numeric types,
+// false for the boolean type, and
+// "" (the empty string) for strings.
+
+// VariablesExample show basic go types
+func VariablesExample() {
 	// Variable declaration
 	var x int
 	x = 5

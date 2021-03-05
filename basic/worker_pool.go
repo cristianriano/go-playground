@@ -1,8 +1,9 @@
-package main
+package basic
 
 import "fmt"
 
-func workerPool() {
+// WorkerPool example for Fib calculation with workers
+func WorkerPool() {
 	jobs := make(chan int, 100)
 	results := make(chan string, 100)
 

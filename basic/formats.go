@@ -1,4 +1,4 @@
-package main
+package basic
 
 import "fmt"
 
@@ -9,7 +9,8 @@ func (a IPAddr) String() string {
 	return fmt.Sprintf("%d.%d.%d.%d", a[0], a[1], a[2], a[3])
 }
 
-func printFormatExample() {
+// PrintFormatExample using printf to create strings
+func PrintFormatExample() {
 	hosts := map[string]IPAddr{
 		"loopback":  {127, 0, 0, 1},
 		"googleDNS": {8, 8, 8, 8},

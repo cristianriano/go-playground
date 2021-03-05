@@ -1,4 +1,4 @@
-package main
+package basic
 
 import (
 	"fmt"
@@ -6,7 +6,8 @@ import (
 	"time"
 )
 
-func concurrencyExamples() {
+// ConcurrencyExamples basic select, channels and WaitGroups
+func ConcurrencyExamples() {
 	// Wait Group
 	var wg sync.WaitGroup
 	wg.Add(1)
