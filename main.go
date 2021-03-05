@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/cristianriano/go-playground/tour"
+	"github.com/cristianriano/go-playground/concurrency"
+	// "github.com/cristianriano/go-playground/tour"
 )
 
 func main() {
@@ -16,5 +17,6 @@ func main() {
 	// 	fmt.Println(f())
 	// }
 	// workerPoolWithCache()
-	tour.RunWebCrawler()
+	// tour.RunWebCrawler()
+	concurrency.ProducerExample()
 }

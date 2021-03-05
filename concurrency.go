@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func concurrency() {
+func concurrencyExamples() {
 	// Wait Group
 	var wg sync.WaitGroup
 	wg.Add(1)
