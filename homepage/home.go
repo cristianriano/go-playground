@@ -18,7 +18,7 @@ func (h *Handler) Home(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("Hello world!"))
 }
 
-// Logger returns the handler with Logger middleware
+// Logger middleware
 func (h *Handler) Logger(next http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		startTime := time.Now()
@@ -32,7 +32,7 @@ func (h *Handler) SetupRoutes(mux *http.ServeMux) {
 	mux.HandleFunc("/", h.Logger(h.Home))
 }
 
-// NewHandler returns a configured handler
+// NewHandler returns a handler with the logger dependency injected
 func NewHandler(logger *log.Logger) *Handler {
 	return &Handler{
 		logger: logger,

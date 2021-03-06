@@ -18,7 +18,7 @@ const serviceAddress = ":8080"
 
 func main() {
 	// Std flags AND file name/line
-	logger := log.New(os.Stdout, "GO prefix ", log.LstdFlags | log.Lshortfile)
+	logger := log.New(os.Stdout, "GO ", log.LstdFlags | log.Lshortfile)
 
 	h := homepage.NewHandler(logger)
 
@@ -28,6 +28,9 @@ func main() {
 	srv := server.New(mux, serviceAddress)
 
 	logger.Println("server starting")
-	// log.Fatal(srv.ListenAndServeTLS(certFile, certKeyFile))
-	logger.Fatal(srv.ListenAndServe())
+	if certFile == "" || certKeyFile == "" {
+		logger.Fatal(srv.ListenAndServe())
+	} else {
+		log.Fatal(srv.ListenAndServeTLS(certFile, certKeyFile))
+	}
 }
