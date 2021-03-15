@@ -2,9 +2,39 @@ package server
 
 import (
 	"crypto/tls"
+	"log"
 	"net/http"
+	"os"
 	"time"
+
+	"github.com/cristianriano/go-playground/homepage"
 )
+
+var (
+	certFile 			 = os.Getenv("CERT_FILE")
+	certKeyFile		 = os.Getenv("KEY_FILE")
+)
+
+const serviceAddress = ":8080"
+
+func Start() {
+	// Std flags AND file name/line
+	logger := log.New(os.Stdout, "GO ", log.LstdFlags | log.Lshortfile)
+
+	h := homepage.NewHandler(logger)
+
+	mux := http.NewServeMux()
+	h.SetupRoutes(mux)
+
+	srv := New(mux, serviceAddress)
+
+	logger.Println("server starting")
+	if certFile == "" || certKeyFile == "" {
+		logger.Fatal(srv.ListenAndServe())
+	} else {
+		log.Fatal(srv.ListenAndServeTLS(certFile, certKeyFile))
+	}
+}
 
 // New returns new server with tls config and timeouts
 func New(mux *http.ServeMux, serverAddress string) *http.Server {

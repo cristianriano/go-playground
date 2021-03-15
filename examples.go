@@ -6,6 +6,7 @@ import (
 
 	"github.com/cristianriano/go-playground/basic"
 	"github.com/cristianriano/go-playground/concurrency"
+	"github.com/cristianriano/go-playground/server"
 	"github.com/cristianriano/go-playground/tour"
 )
 
@@ -20,4 +21,5 @@ func otherExamples() {
 	basic.WorkerPoolWithCache()
 	tour.RunWebCrawler()
 	concurrency.ProducerExample()
+	server.Start()
 }
