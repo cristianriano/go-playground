@@ -17,7 +17,9 @@ func main() {
 	// st.Push(1)
 	// fmt.Println(st.Pop())
 
-	x := "asdefghhgfedty"
-	fmt.Println(x)
-	fmt.Println(leetcode.LongestPalindrome(x))
+	// x := "asdefghhgfedty"
+	// fmt.Println(x)
+	// fmt.Println(leetcode.LongestPalindrome(x))
+
+	fmt.Println(leetcode.TwoSum([]int{2, 7, 11, 15}, 26))
 }
