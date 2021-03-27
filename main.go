@@ -7,5 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println(leetcode.LengthOfLongestSubstring("abcabcbb"))
+	// fmt.Println(leetcode.LengthOfLongestSubstring("abcabcbb"))
+	fmt.Println(leetcode.ReverseInteger(1234))
 }
