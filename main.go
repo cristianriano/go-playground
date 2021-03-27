@@ -13,7 +13,11 @@ func main() {
 	// x := []int{3, -9, -1, 3, 4, 5, -2}
 	// fmt.Println(leetcode.ThreeSum(x))
 
-	var st leetcode.Stack
-	st.Push(1)
-	fmt.Println(st.Pop())
+	// var st leetcode.Stack
+	// st.Push(1)
+	// fmt.Println(st.Pop())
+
+	x := "asdefghhgfedty"
+	fmt.Println(x)
+	fmt.Println(leetcode.LongestPalindrome(x))
 }
