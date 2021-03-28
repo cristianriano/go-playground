@@ -21,5 +21,5 @@ func main() {
 
 	// fmt.Println(leetcode.TwoSum([]int{2, 7, 11, 15}, 26))
 
-	leetcode.Permute([]int{1, 2, 3})
+	leetcode.Permute([]int{1, 2, 3, 4})
 }

@@ -3,22 +3,23 @@ package leetcode
 import "fmt"
 
 func Permute(nums []int) {
-	generatePermutation(make([]int, len(nums)), nums, 0)
+	generatePermutation(nums, len(nums))
 }
 
-func generatePermutation(head, rest []int, deep int) {
-	if len(rest) == 0 {
-		fmt.Println(head)
+func generatePermutation(nums []int, size int) {
+	if size == 1 {
+		fmt.Println(nums)
 		return
 	}
 
-	tmp := make([]int, len(rest) - 1)
-	for i := range rest {
-		head[deep] = rest[i]
-		copy(tmp[:i], rest[:i])
-		if i + 1 != len(rest) {
-			copy(tmp[i:], rest[i+1:])
+	generatePermutation(nums, size - 1)
+	for i := 0; i < size - 1; i++ {
+		if i % 2 == 0 {
+			nums[i], nums[size - 1] = nums[size - 1], nums[i]
+		} else {
+			nums[0], nums[size - 1] = nums[size - 1], nums[0]
 		}
-		generatePermutation(head, tmp, deep + 1)
+
+		generatePermutation(nums, size - 1)
 	}
 }
