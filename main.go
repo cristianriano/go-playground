@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/cristianriano/go-playground/leetcode"
 )
 
@@ -21,5 +19,7 @@ func main() {
 	// fmt.Println(x)
 	// fmt.Println(leetcode.LongestPalindrome(x))
 
-	fmt.Println(leetcode.TwoSum([]int{2, 7, 11, 15}, 26))
+	// fmt.Println(leetcode.TwoSum([]int{2, 7, 11, 15}, 26))
+
+	leetcode.Permute([]int{1, 2, 3})
 }
