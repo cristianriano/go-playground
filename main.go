@@ -25,14 +25,10 @@ func main() {
 
 	// leetcode.Permute([]int{1, 2, 3, 4})
 
-	root := leetcode.BinaryThree{Value: 5}
-	root.Insert(4)
-	root.Insert(2)
-	root.Insert(8)
-	root.Insert(7)
-	root.Insert(1)
-	root.PrintInOrder()
+	// root := leetcode.BinaryThree{Value: 5}
+	// root.Insert(4)
+	// root.PrintInOrder()
+	// fmt.Println(root.Includes(3))
 
-	fmt.Println(root.Includes(3))
-	fmt.Println(root.Includes(1))
+	fmt.Println(leetcode.Merge([]int{6, 9, 3, 5, 1, 4, 8}))
 }
