@@ -1,9 +1,7 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/cristianriano/go-playground/leetcode"
+	"github.com/cristianriano/go-playground/linkedlist"
 )
 
 func main() {
@@ -40,5 +38,10 @@ func main() {
 	// leetcode.MergeArrays([]int{1,2,3,0,0,0}, 3, []int{2,5,6}, 3)
 	// fmt.Println(leetcode.RemoveElement([]int{3,3,3}, 3))
 	// fmt.Println(leetcode.RemoveDuplicates([]int{1,2,3,4,5}))
-	fmt.Println(leetcode.CheckIfExist([]int{-2,0,10,-19,4,6,-8}))
+	// fmt.Println(leetcode.CheckIfExist([]int{-2,0,10,-19,4,6,-8}))
+
+	list := linkedlist.Constructor()
+	list.AddAtIndex(0, 1)
+	list.AddAtIndex(1, 2)
+	list.Print()
 }
