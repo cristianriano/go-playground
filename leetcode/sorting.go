@@ -98,3 +98,20 @@ func intercalate(x, y []int) []int {
 	return res
 }
 
+func InsertSort(nums []int) []int {
+	res := make([]int, len(nums))
+
+	for i, x := range nums {
+		insertSorted(res, x, i)
+	}
+	return res
+}
+
+func insertSorted(list []int, x, index int) {
+	j := 0
+
+  for j = index - 1; j >= 0 && list[j] > x; j-- {
+		list[j + 1] = list[j]
+	}
+	list[j + 1] = x
+}
