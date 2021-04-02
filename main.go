@@ -34,5 +34,11 @@ func main() {
 
 	// fmt.Println(leetcode.SolveEquation("1+x=2"))
 
-	fmt.Println(leetcode.InsertSort([]int{6, 9, 3, 5, 1, 4, 8}))
+	// fmt.Println(leetcode.InsertSort([]int{6, 9, 3, 5, 1, 4, 8}))
+
+	// leetcode.DuplicateZeros([]int{0,1,2})
+	// leetcode.MergeArrays([]int{1,2,3,0,0,0}, 3, []int{2,5,6}, 3)
+	// fmt.Println(leetcode.RemoveElement([]int{3,3,3}, 3))
+	// fmt.Println(leetcode.RemoveDuplicates([]int{1,2,3,4,5}))
+	fmt.Println(leetcode.CheckIfExist([]int{-2,0,10,-19,4,6,-8}))
 }
