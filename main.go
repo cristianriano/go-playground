@@ -30,5 +30,7 @@ func main() {
 	// root.PrintInOrder()
 	// fmt.Println(root.Includes(3))
 
-	fmt.Println(leetcode.Merge([]int{6, 9, 3, 5, 1, 4, 8}))
+	// fmt.Println(leetcode.Merge([]int{6, 9, 3, 5, 1, 4, 8}))
+
+	fmt.Println(leetcode.SolveEquation("1+x=2"))
 }
