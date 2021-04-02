@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/cristianriano/go-playground/dailyinterview"
 	"github.com/cristianriano/go-playground/linkedlist"
 )
 
@@ -40,8 +41,19 @@ func main() {
 	// fmt.Println(leetcode.RemoveDuplicates([]int{1,2,3,4,5}))
 	// fmt.Println(leetcode.CheckIfExist([]int{-2,0,10,-19,4,6,-8}))
 
-	list := linkedlist.Constructor()
-	list.AddAtIndex(0, 1)
-	list.AddAtIndex(1, 2)
-	list.Print()
+	list1 := linkedlist.Constructor()
+	list2 := linkedlist.Constructor()
+	list1.AddAtTail(2)
+	// list1.AddAtTail(4)
+	// list1.AddAtTail(3)
+
+	list2.AddAtTail(9)
+	list2.AddAtTail(9)
+	list2.AddAtTail(9)
+	list2.AddAtTail(9)
+	list1.Print()
+	list2.Print()
+
+	sum := dailyinterview.SumLinkedList(list1, list2)
+	sum.Print()
 }
