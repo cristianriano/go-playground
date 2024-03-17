@@ -1,5 +1,10 @@
 package banking
 
+import (
+	"fmt"
+	"time"
+)
+
 type Account interface {
 	Deposit(amount int64)
 	Withdraw(amount int64)
@@ -7,26 +12,31 @@ type Account interface {
 }
 
 type defaultAccount struct {
-	balance int64
-	printer printer
+	transactions []transaction
+	printer      printer
+}
+
+type transaction struct {
+	amount int64
+	date   time.Time
 }
 
 func NewAccount() Account {
 	return &defaultAccount{
-		balance: 0,
-		printer: &consolePrinter{},
+		transactions: make([]transaction, 0),
+		printer:      &consolePrinter{},
 	}
 }
 
 func testAccount(printer printer) Account {
 	return &defaultAccount{
-		balance: 0,
-		printer: printer,
+		transactions: make([]transaction, 0),
+		printer:      printer,
 	}
 }
 
 func (account *defaultAccount) Deposit(amount int64) {
-
+	account.transactions = append(account.transactions, transaction{date: time.Now(), amount: amount})
 }
 
 func (account *defaultAccount) Withdraw(amount int64) {
@@ -34,5 +44,10 @@ func (account *defaultAccount) Withdraw(amount int64) {
 }
 
 func (account *defaultAccount) PrintStatement() {
-	account.printer.println("Date\tAmount\tBalance")
+	account.printer.println("Date | Amount | Balance")
+
+	for _, transaction := range account.transactions {
+		line := fmt.Sprintf("%s | +%d | %d", transaction.date.Format("02.01.2006"), transaction.amount, transaction.amount)
+		account.printer.println(line)
+	}
 }
