@@ -18,6 +18,13 @@ func NewAccount() Account {
 	}
 }
 
+func testAccount(printer printer) Account {
+	return &defaultAccount{
+		balance: 0,
+		printer: printer,
+	}
+}
+
 func (account *defaultAccount) Deposit(amount int64) {
 
 }
@@ -27,5 +34,5 @@ func (account *defaultAccount) Withdraw(amount int64) {
 }
 
 func (account *defaultAccount) PrintStatement() {
-
+	account.printer.println("Date\tAmount\tBalance")
 }
