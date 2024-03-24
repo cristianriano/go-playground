@@ -54,7 +54,7 @@ func TestPrintStatement_showsTransactionsInOrder(t *testing.T) {
 	account.Withdraw(20)
 
 	account.PrintStatement()
-	if printer.text != "\nDate | Amount | Balance\n23.03.2024 | -20 | 40\n22.03.2024 | 10 | 60\n21.03.2024 | 50 | 50" {
+	if printer.text != "\nDate | Amount | Balance\n23.03.2024 | -20 | 40\n22.03.2024 | +10 | 60\n21.03.2024 | +50 | 50" {
 		t.Error(fmt.Sprintf("'%s' statement is not correct", printer.text))
 	}
 }
@@ -68,6 +68,7 @@ func testAccount(printer printer, clock clock) Account {
 		transactions: make([]transaction, 0),
 		printer:      printer,
 		clock:        clock,
+		total:        0,
 	}
 }
 
