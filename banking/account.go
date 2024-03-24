@@ -14,6 +14,7 @@ type Account interface {
 type defaultAccount struct {
 	transactions []transaction
 	printer      printer
+	clock        clock
 }
 
 type transaction struct {
@@ -25,29 +26,16 @@ func NewAccount() Account {
 	return &defaultAccount{
 		transactions: make([]transaction, 0),
 		printer:      &consolePrinter{},
-	}
-}
-
-func (t *transaction) symbol() string {
-	if t.amount < 0 {
-		return ""
-	}
-	return "+"
-}
-
-func testAccount(printer printer) Account {
-	return &defaultAccount{
-		transactions: make([]transaction, 0),
-		printer:      printer,
+		clock:        &defaultClock{},
 	}
 }
 
 func (acc *defaultAccount) Deposit(amount int64) {
-	acc.transactions = append(acc.transactions, transaction{date: time.Now(), amount: amount})
+	acc.transactions = append(acc.transactions, transaction{date: acc.clock.now(), amount: amount})
 }
 
 func (acc *defaultAccount) Withdraw(amount int64) {
-	acc.transactions = append(acc.transactions, transaction{date: time.Now(), amount: amount * -1})
+	acc.transactions = append(acc.transactions, transaction{date: acc.clock.now(), amount: amount * -1})
 }
 
 func (acc *defaultAccount) PrintStatement() {
@@ -63,4 +51,11 @@ func (acc *defaultAccount) PrintStatement() {
 		)
 		acc.printer.println(line)
 	}
+}
+
+func (t *transaction) symbol() string {
+	if t.amount < 0 {
+		return ""
+	}
+	return "+"
 }
