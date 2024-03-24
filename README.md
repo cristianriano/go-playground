@@ -23,3 +23,4 @@ Other useful commands:
 1. `go mod tidy` to remove unused dependencies or add missing ones.
 2. `go mod vendor` to create a vendor folder with all the dependencies.
 3. `go install` downloads and install a package. It will be available in **$GOPATH/bin**
+4. `gofmt -w .` format
